@@ -20,22 +20,29 @@ public class ColorController : ControllerBase
     public ActionResult<Color> Create()
     {
         Console.WriteLine($"Db: {_context.DbPath}");
- 
+
         var color = new Color()
         {
             Name = "Black",
             HexCode = "#000000"
         };
- 
+
         _context.Colors.Add(color);
         var success = _context.SaveChanges() > 0;
- 
+
         if (success)
         {
             return color;
         }
- 
+
         throw new Exception("Error creating Color");
     }
+
+    [HttpGet(Name = "GetColor")]
+    public ActionResult<List<Color>> Get()
+    {
+        return this._context.Colors.ToList();
+    }
+
 }
 
