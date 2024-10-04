@@ -23,8 +23,8 @@ public class ColorController : ControllerBase
 
         var color = new Color()
         {
-            Name = "Black",
-            HexCode = "#000000"
+            Name = "Blue",
+            HexCode = "#151B54"
         };
 
         _context.Colors.Add(color);
