@@ -15,27 +15,37 @@ import { AddColorDialogComponent } from '../add-color-dialog/add-color-dialog.co
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  colors: any;
+  colors: Array<any>;
+
+  url = 'http://localhost:5013/color'
 
   constructor(private http: HttpClient, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.http.get('http://localhost:5013/color').subscribe({
+    this.http.get<Array<any>>(this.url).subscribe({
       next: (response) => this.colors = response,
       error: (e) => console.error(e),
       complete: () => console.log('completed')
     });
   }
 
-  addColor(): void {
+  openAddColorDialog(): void {
     const dialogRef = this.dialog.open(AddColorDialogComponent, {
       width: '250px'
     });
 
     dialogRef.afterClosed().subscribe(color => {
       if (color) {
-        console.log(color);
+        this.createNewColor(color)
       }
+    })
+  }
+
+  createNewColor(color: any) {
+    this.http.post(this.url, color).subscribe({
+      next: (response) => this.colors.push(response),
+      error: (e) => console.error(e),
+      complete: () => console.log('completed')
     })
   }
 }
