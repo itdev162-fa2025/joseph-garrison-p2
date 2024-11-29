@@ -20,6 +20,12 @@
     width: 150px;
 }
 
-.mat-mdc-card-content h4 {
+.mat-mdc-card-content p {
     padding: 10px;
+    text-transform: uppercase;
+}
+
+.button-wrapper {
+    text-align: end;
+    padding: 25px;
 }
