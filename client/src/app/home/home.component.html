@@ -1,11 +1,9 @@
-<!-- <div class="container">
-    <div *ngFor="let color of colors" (click)="showHexCode(color)">
-        <div [ngStyle]="{'background-color': color.hexCode}" class="item-color"></div>
-        {{color.name}}
-
-    </div>
-</div> -->
-
+<div class="button-wrapper">
+    <button mat-flat-button (click)="addColor()">
+        <mat-icon>add</mat-icon>
+        Add Color
+    </button>
+</div>
 <div class="container">
     <div *ngFor="let color of colors">
         <mat-card class="example-card" appearance="outlined">
@@ -14,7 +12,7 @@
             </mat-card-header>
             <mat-card-content>
                 <div [ngStyle]="{'background-color': color.hexCode}" class="item-color"></div>
-                <h4>{{ color.hexCode }}</h4>
+                <p>{{ color.hexCode }}</p>
             </mat-card-content>
             <mat-card-footer>
                 <!-- Add delete button here -->
