@@ -1,0 +1,24 @@
+<!-- <div class="container">
+    <div *ngFor="let color of colors" (click)="showHexCode(color)">
+        <div [ngStyle]="{'background-color': color.hexCode}" class="item-color"></div>
+        {{color.name}}
+
+    </div>
+</div> -->
+
+<div class="container">
+    <div *ngFor="let color of colors">
+        <mat-card class="example-card" appearance="outlined">
+            <mat-card-header>
+                <mat-card-title>{{ color.name }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div [ngStyle]="{'background-color': color.hexCode}" class="item-color"></div>
+                <h4>{{ color.hexCode }}</h4>
+            </mat-card-content>
+            <mat-card-footer>
+                <!-- Add delete button here -->
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</div>
