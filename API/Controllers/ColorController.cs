@@ -16,15 +16,20 @@ public class ColorController : ControllerBase
         _context = context;
     }
 
-    [HttpPost]
-    public ActionResult<Color> Create()
+    ///<summary>
+    ///POST api/post
+    ///</summary>
+    ///<param name= "request">JSON request containing post fields</param>
+    ///<return>A new post</returns>
+    [HttpPost(Name = "Create")]
+    public ActionResult<Color> Create([FromBody]Color request)
     {
         Console.WriteLine($"Db: {_context.DbPath}");
 
         var color = new Color()
         {
-            Name = "Blue",
-            HexCode = "#151B54"
+            Name = request.Name,
+            HexCode = request.HexCode
         };
 
         _context.Colors.Add(color);
@@ -32,7 +37,7 @@ public class ColorController : ControllerBase
 
         if (success)
         {
-            return color;
+            return Ok(color);
         }
 
         throw new Exception("Error creating Color");
