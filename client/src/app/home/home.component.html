@@ -1,0 +1,7 @@
+<div class="container">
+    <div *ngFor="let color of colors" (click)="showHexCode(color)">
+        <div [ngStyle]="{'background-color': color.hexCode}" class="item-color"></div>
+        {{color.name}}
+
+    </div>
+</div>
