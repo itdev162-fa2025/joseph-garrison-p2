@@ -1,6 +1,6 @@
 .item-color {
     width: 100%;
-    height: 100px;
+    height: 150px;
     border-radius: 3px;
     margin-right: 10px;
 }
@@ -17,7 +17,7 @@
 
 .mat-mdc-card-content {
     padding: 2px;
-    width: 150px;
+    width: 250px;
 }
 
 .mat-mdc-card-content p {
@@ -28,4 +28,9 @@
 .button-wrapper {
     text-align: end;
     padding: 25px;
+}
+
+.mat-mdc-card-footer {
+    margin: 10px 0 20px;
+    text-align: center;
 }
