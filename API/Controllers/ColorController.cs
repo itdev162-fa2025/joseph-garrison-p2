@@ -22,7 +22,7 @@ public class ColorController : ControllerBase
     ///<param name= "request">JSON request containing post fields</param>
     ///<return>A new post</returns>
     [HttpPost(Name = "Create")]
-    public ActionResult<Color> Create([FromBody]Color request)
+    public ActionResult<Color> Create([FromBody] Color request)
     {
         Console.WriteLine($"Db: {_context.DbPath}");
 
@@ -49,5 +49,24 @@ public class ColorController : ControllerBase
         return this._context.Colors.ToList();
     }
 
+    [HttpDelete("{id}", Name = "Delete")]
+    public ActionResult<Color> Delete(int id)
+    {
+        var color = _context.Colors.Find(id);
+        if (color == null)
+        {
+            return NotFound();
+        }
+
+        _context.Colors.Remove(color);
+        var success = _context.SaveChanges() > 0;
+
+        if (success)
+        {
+            return Ok(color);
+        }
+
+        throw new Exception("Error deleting post");
+    }
 }
 
